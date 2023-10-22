@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Controllers\AuthController;
 
 class StoreSurveyRequest extends FormRequest
 {
@@ -17,9 +18,10 @@ class StoreSurveyRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'user_id' => $user()->id
+            'user_id' => auth()->user()->id
         ]);
     }
+    
 
     /**
      * Get the validation rules that apply to the request.

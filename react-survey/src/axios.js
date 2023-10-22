@@ -6,7 +6,7 @@ const axiosClient = axios.create({
 })
 
 axiosClient.interceptors.request.use((config) => {
-    const token ='123'; // to do!
+   // const token ='123'; // to do!
     config.headers.Authorization = `Bearer ${localStorage.getItem('TOKEN')}`
     return config
 });
@@ -15,6 +15,8 @@ axiosClient.interceptors.response.use(response => {
     return response;
 }, error => {
     if(error.response && error.response.status === 401) { //check if it has an error status of 401
+        localStorage.removeItem('TOKEN')
+        window.location.reload()
         router.navigate('/login'); // if status is 401 redirect it to the login page    
         return error;
     }

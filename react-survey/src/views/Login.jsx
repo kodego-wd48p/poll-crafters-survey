@@ -23,9 +23,19 @@ export default function Login() {
       })
     .catch((error) => {
       if(error.response) {
-        const finalErrors = Object.values(error.response.data.errors).reduce((accum, next) => [...accum, ...next], [])
+        // const finalErrors = Object.values(error.response.data.errors).reduce((accum, next) => [...accum, ...next], [])
         
-        setError({__html: finalErrors.join('<br>')})
+        // setError({__html: finalErrors.join('<br>')})
+        if (error.response.status === 422 && error.response.data.error === 'The provided credentials are not correct') {
+          // Handle the "wrong password" error here
+          setError({ __html: error.response.data.error });
+        } else {
+          const finalErrors = Object.values(error.response.data.errors).reduce(
+            (accum, next) => [...accum, ...next],
+            []
+          );
+          setError({ __html: finalErrors.join('<br>') });
+        }
       }
       console.error(error)
     });

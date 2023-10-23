@@ -5,21 +5,36 @@ import TButton from "../components/core/TButton";
 import { useStateContext } from "../contexts/ContextProvider";
 import { useEffect, useState } from "react";
 import axiosClient from "../axios";
+import PaginationLinks from "../components/PaginationLinks";
+import { DotSpinner } from '@uiball/loaders'
 
 export default function Surveys() {
-  // const {surveys} = useStateContext();
   const [surveys, setSurveys] = useState([]);
-  console.log(surveys);
+  const [meta, setMeta] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const onDeleteClick = () => {
     console.log("On Delete click")
   };
 
-  useEffect(() => {
-    axiosClient.get('/survey')
+  const onPageClick = (link) => {
+    getSurveys(link.url)
+  }
+
+  const getSurveys = (url) => {
+    url = url || '/survey'
+    setLoading(true)
+    axiosClient.get(url)
       .then(({data}) => {
         setSurveys(data.data)
-      });
+        setMeta(data.meta)
+        setLoading(false);
+    });
+  }
+
+  useEffect(() => {
+    getSurveys()
+    
   }, []);
 
   return (
@@ -30,12 +45,33 @@ export default function Surveys() {
           <span className="pt-0.5">New Survey</span>
         </TButton>
       )}>
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
-          {surveys.map(survey => (
-            <SurveyListItem survey={survey} key={survey.id} onDeleteClick={onDeleteClick} />
-          ))}
+      {loading &&
+        <div className="flex h-screen items-center justify-center">
+          {/* <h3 className="text-white text-xl">Loading...</h3> */}
+          
+
+            <DotSpinner 
+             size={70}
+             speed={0.9} 
+             color="white" 
+            />
       </div>
-        
+      }
+      
+      {!loading &&
+        <div>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
+              {surveys.map(survey => (
+                <SurveyListItem survey={survey} key={survey.id} onDeleteClick={onDeleteClick} />
+              ))}
+          </div>
+            
+          <PaginationLinks meta={meta} onPageClick={onPageClick} />
+        </div>
+      }
+      
+      
+
       </PageComponent>
     // <>
     //         <header className="bg-grbodydark border-b-2 border-grbtnred shadow">

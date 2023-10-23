@@ -1,14 +1,17 @@
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import PageComponent from '../components/PageComponent'
 import { PhotoIcon } from '@heroicons/react/24/outline';
 import  TButton  from "../components/core/TButton";
 import axiosClient from '../axios.js';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import SurveyQuestions from '../components/SurveyQuestions';
+import { DotSpinner } from '@uiball/loaders'
 
 export default function SurveyView() {
     const navigate = useNavigate();
+    const {id} = useParams()
+
     const [survey, setSurvey] = useState({
         title: "",
         slug: "",
@@ -19,6 +22,7 @@ export default function SurveyView() {
         expire_date: "",
         questions: [],
     });
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     // const [errors, setErrors] = useState({
     //     title: '',
@@ -54,8 +58,14 @@ export default function SurveyView() {
             payload.image = payload.image_url;
         }
         delete payload.image_url;
+        let res = null;
+        if(id){
+            res = axiosClient.put(`/survey/${id}`, payload)
+        } else {
+            res = axiosClient.post('/survey', payload)
+        }
         
-        axiosClient.post('/survey', payload).then((res) => {
+        res.then((res) => {
             console.log(res);
             navigate('/surveys');
         })
@@ -88,9 +98,42 @@ export default function SurveyView() {
         })
     }
 
+    const addQuestion = () => {
+        survey.questions.push({
+            id: uuidv4(),
+            type: "text",
+            question: "",
+            description: "",
+            data: [],
+        })
+        setSurvey({...survey})
+    }
+
+    useEffect(() => {
+        if(id) {
+            setLoading(true)
+            axiosClient.get(`/survey/${id}`)
+            .then (({data}) => {
+                setSurvey(data.data)
+                setLoading(false)
+            })
+        }
+    }, [])
+
   return (
-    <PageComponent title="Create new Survey">
-        <form action="#" method='POST' onSubmit={onSubmit}>
+    <PageComponent title={!id ? 'Create new Survey' : 'Update Survey'}>
+        {loading &&
+            <div className="flex h-screen items-center justify-center">
+              {/* <h3 className="text-white text-xl">Loading...</h3> */}
+                <DotSpinner 
+                 size={70}
+                 speed={0.9} 
+                 color="white" 
+                />
+            </div>
+        }
+        {!loading &&
+            <form action="#" method='POST' onSubmit={onSubmit}>
             <div className="shadow sm:overflow-hidden sm:rounded-md">
 
                
@@ -242,7 +285,8 @@ export default function SurveyView() {
                     </TButton>
                 </div>
             </div>
-        </form>
+            </form>
+        }
     </PageComponent>
   )
 }

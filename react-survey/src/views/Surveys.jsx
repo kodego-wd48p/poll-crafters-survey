@@ -7,14 +7,21 @@ import { useEffect, useState } from "react";
 import axiosClient from "../axios";
 import PaginationLinks from "../components/PaginationLinks";
 import { DotSpinner } from '@uiball/loaders'
+import router from "../router";
 
 export default function Surveys() {
   const [surveys, setSurveys] = useState([]);
   const [meta, setMeta] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const onDeleteClick = () => {
-    console.log("On Delete click")
+  const onDeleteClick = (id) => {
+    if(window.confirm('Are you sure you want to delete this survey?')){
+      axiosClient.delete(`/survey/${id}`)
+        .then(() => {
+          getSurveys();
+        });
+    }
+    
   };
 
   const onPageClick = (link) => {

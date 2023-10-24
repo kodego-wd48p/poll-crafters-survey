@@ -29,8 +29,8 @@ export default function TButton({
             case "indigo":
             classes = [
                 ...classes,
-                "text-grbtnred",
-                "focus:border-grbtnhover",
+                "text-grbodydark",
+                "focus:border-grbodylighter",
             ];
             break;
             case "red":
@@ -53,8 +53,8 @@ export default function TButton({
             case "indigo":
             classes = [
                 ...classes,
-                "bg-grbtnred",
-                "hover:bg-grbtnhover",
+                "bg-grbodydark",
+                "hover:bg-grbodylighter",
                 "focus:ring-indigo-500",
             ];
             break;

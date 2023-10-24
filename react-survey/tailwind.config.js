@@ -24,6 +24,7 @@ export default {
       colors: {
         grnavgreen: '#217267',
         grbodydark: '#2B2D42',
+        grbodylighter: '#595B72',
         grtextlight: '#EDF2F4',
         grbtnred: '#EF233C',
         grbtnhover: '#F53E53'

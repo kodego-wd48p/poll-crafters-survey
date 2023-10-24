@@ -62,7 +62,7 @@ export default function DefaultLayout() {
                       <img
                         className="h-10 w-10 cursor-pointer" 
                         src="../../public/brain-storm-website-favicon---color.png"
-                        alt="Your Company"
+                        alt="Poll Crafters"
                       />
                       <h2 className='text-xl font-bold ml-2 text-grbtnred cursor-pointer'>Poll Crafters</h2>
                     </div>

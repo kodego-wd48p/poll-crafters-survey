@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import PageComponent from '../components/PageComponent'
-import { PhotoIcon } from '@heroicons/react/24/outline';
+import { LinkIcon, PhotoIcon, PlusCircleIcon, TrashIcon } from '@heroicons/react/24/outline';
 import  TButton  from "../components/core/TButton";
 import axiosClient from '../axios.js';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -118,6 +118,10 @@ export default function SurveyView() {
         setSurvey({...survey})
     }
 
+    const onDelete = () => {
+
+    }
+
     useEffect(() => {
         if(id) {
             setLoading(true)
@@ -130,7 +134,21 @@ export default function SurveyView() {
     }, [])
 
   return (
-    <PageComponent title={!id ? 'Create new Survey' : 'Update Survey'}>
+    <PageComponent 
+        title={!id ? 'Create new Survey' : 'Update Survey'}
+        buttons={(
+            <div className='flex gap-2'>
+                <TButton color="green" href={`/survey/public/${survey.slug}`}>
+                    <LinkIcon className="h-4 w-4 mr-2" />
+                    <span className="pt-0.5">Public Link</span>
+                </TButton>
+                <TButton color="red" obClick={onDelete}>
+                    <TrashIcon className="h-4 w-4 mr-2" />
+                    <span className="pt-0.5">Delete</span>
+                </TButton>
+            </div>
+        )}
+    >
         {loading &&
             <div className="flex h-screen items-center justify-center">
               {/* <h3 className="text-white text-xl">Loading...</h3> */}

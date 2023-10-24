@@ -10,6 +10,7 @@ import { DotSpinner } from '@uiball/loaders'
 import router from "../router";
 
 export default function Surveys() {
+  const { showToast } = useStateContext();
   const [surveys, setSurveys] = useState([]);
   const [meta, setMeta] = useState({});
   const [loading, setLoading] = useState(false);
@@ -19,6 +20,7 @@ export default function Surveys() {
       axiosClient.delete(`/survey/${id}`)
         .then(() => {
           getSurveys();
+          showToast('Survey successfully deleted!')
         });
     }
     
@@ -67,13 +69,15 @@ export default function Surveys() {
       
       {!loading &&
         <div>
+          {surveys.length === 0 && <div className="py-8 text-center text-white">You don't have any surveys created!</div>}
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
               {surveys.map(survey => (
                 <SurveyListItem survey={survey} key={survey.id} onDeleteClick={onDeleteClick} />
               ))}
           </div>
-            
-          <PaginationLinks meta={meta} onPageClick={onPageClick} />
+          {surveys.length > 0 &&
+            <PaginationLinks meta={meta} onPageClick={onPageClick} />
+          }
         </div>
       }
       

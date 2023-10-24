@@ -7,8 +7,11 @@ import axiosClient from '../axios.js';
 import { useNavigate, useParams } from 'react-router-dom';
 import SurveyQuestions from '../components/SurveyQuestions';
 import { DotSpinner } from '@uiball/loaders'
+import { useStateContext } from '../contexts/ContextProvider';
+import {v4 as uuidv4} from "uuid";
 
 export default function SurveyView() {
+    const { showToast } = useStateContext();
     const navigate = useNavigate();
     const {id} = useParams()
 
@@ -68,6 +71,12 @@ export default function SurveyView() {
         res.then((res) => {
             console.log(res);
             navigate('/surveys');
+            if (id) {
+                showToast('Survey successfully updated!')
+            } else {
+                showToast('Survey successfully created!')
+            }
+            
         })
         .catch((err) => {
             // if (err && err.response) {

@@ -29,7 +29,7 @@ export default function PublicQuestionView({
             <div>
               <select
                 onChange={(ev) => answerChanged(ev.target.value)}
-                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-grbtnred focus:border-grbtnred sm:text-sm"
+                className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-grbodydark focus:border-grbodydark sm:text-sm"
               >
                 <option value="">Please Select</option>
                 {question.data.options.map((option) => (
@@ -50,7 +50,7 @@ export default function PublicQuestionView({
                     value={option.text}
                     onChange={(ev) => answerChanged(ev.target.value)}
                     type="radio"
-                    className="focus:ring-grbtnred h-4 w-4 text-grbtnred border-gray-300"
+                    className="focus:ring-grbodydark h-4 w-4 text-grbodydark border-gray-300"
                   />
                   <label
                     htmlFor={option.uuid}
@@ -70,7 +70,7 @@ export default function PublicQuestionView({
                     id={option.uuid}
                     onChange={ev => onCheckboxChange(option, ev)}
                     type="checkbox"
-                    className="focus:ring-grbtnred h-4 w-4 text-grbtnred border-gray-300 rounded"
+                    className="focus:ring-grbodydark h-4 w-4 text-grbodydark border-gray-300 rounded"
                   />
                   <label
                     htmlFor={option.uuid}
@@ -87,7 +87,7 @@ export default function PublicQuestionView({
               <input
                 type="text"
                 onChange={(ev) => answerChanged(ev.target.value)}
-                className="mt-1 focus:ring-grbtnred focus:border-grbtnred block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 focus:ring-grbodydark focus:border-grbodydark block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           )}
@@ -95,7 +95,7 @@ export default function PublicQuestionView({
             <div>
               <textarea
                 onChange={(ev) => answerChanged(ev.target.value)}
-                className="mt-1 focus:ring-grbtnred focus:border-grbtnred block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 focus:ring-grbodydark focus:border-grbodydark block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               ></textarea>
             </div>
           )}

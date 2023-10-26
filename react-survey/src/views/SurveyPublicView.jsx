@@ -76,7 +76,7 @@ export default function SurveyPublicView() {
 
 
           {surveyFinished && (
-            <div className="py-8 px-6 bg-emerald-500 text-white w-[600px] mx-auto">
+            <div className="py-8 px-6 mt-12 bg-emerald-500 text-white text-center text-xl w-full mx-auto sm:text-5xl">
               Thank you for participating in the survey
             </div>
           )}

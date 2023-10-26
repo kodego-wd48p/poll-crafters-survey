@@ -64,7 +64,7 @@ export default function DefaultLayout() {
                         src="../../public/brain-storm-website-favicon---color.png"
                         alt="Poll Crafters"
                       />
-                      <h2 className='text-xl font-bold ml-2 text-grbtnred cursor-pointer'>Poll Crafters</h2>
+                      <h2 className='text-xl font-bold ml-2 text-emerald-600 cursor-pointer'>Poll Crafters</h2>
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
@@ -74,7 +74,7 @@ export default function DefaultLayout() {
                             to={item.to}
                             className={({ isActive }) => classNames(
                               isActive
-                                ? 'bg-grbtnred text-white'
+                                ? 'bg-emerald-600 text-white'
                                 : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                               'rounded-md px-3 py-2 text-sm font-medium'
                             )}
@@ -103,7 +103,7 @@ export default function DefaultLayout() {
                           <Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="absolute -inset-1.5" />
                             <span className="sr-only">Open user menu</span>
-                            <UserIcon className='w-8 h-8 bg-black/25 p-2 rounded-full text-grbtnred' />
+                            <UserIcon className='w-8 h-8 bg-emerald-600 p-2 rounded-full text-white' />
                             {/* <img className="h-8 w-8 rounded-full" src={currentUser.imageUrl} alt="" /> */}
                           </Menu.Button>
                         </div>
@@ -116,14 +116,14 @@ export default function DefaultLayout() {
                           leaveFrom="transform opacity-100 scale-100"
                           leaveTo="transform opacity-0 scale-95"
                         >
-                          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-emerald-400 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             
                               <Menu.Item>
                                
                                   <a
                                     href="#"
                                     onClick={(ev) => logout(ev)}
-                                    className={ 'bg-gray-100 block px-4 py-2 text-sm text-gray-700'}
+                                    className={ 'bg-emerald-400 block px-4 py-2 text-sm text-white'}
                                   >
                                     Sign out
                                   </a>
@@ -158,7 +158,7 @@ export default function DefaultLayout() {
                       as="a"
                       to={item.to}
                       className={({ isActive }) => classNames(
-                        isActive ? 'bg-grbtnred text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        isActive ? 'bg-emerald-600 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                         'block rounded-md px-3 py-2 text-base font-medium'
                       )}
                         
@@ -170,7 +170,7 @@ export default function DefaultLayout() {
                 <div className="border-t border-gray-700 pb-3 pt-4">
                   <div className="flex items-center px-5">
                     <div className="flex-shrink-0">
-                    <UserIcon className='w-8 h-8 bg-black/25 p-2 rounded-full text-grbtnred' />
+                    <UserIcon className='w-8 h-8 bg-emerald-400 p-2 rounded-full text-white' />
                       {/* <img className="h-10 w-10 rounded-full" src={currentUser.imageUrl} alt="" /> */}
                     </div>
                     <div className="ml-3">

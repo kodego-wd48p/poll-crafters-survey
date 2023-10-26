@@ -65,51 +65,53 @@ export default function Dashboard() {
               className=" order-1 lg:order-1 row-span-2"
               style={{animationDelay: '0.3s'}}
             >
-              {data.latestSurvey && (
+              {data.latestSurveys && (
                 <div>
                   <img 
-                    src={data.latestSurvey.image_url} 
+                    src={data.latestSurveys.image_url} 
                     className="w-[240px] mx-auto"
                   />
                   <h3 className="font-bold text-xl mb-3">
-                    {data.latestSurvey.title}
+                    {data.latestSurveys.title}
                   </h3>
                   <div className="flex justify-between text-sm mb-1">
                     <div>Create Date:</div>
-                    <div>{data.latestSurvey.created_at}</div>
+                    <div>{data.latestSurveys.created_at}</div>
                   </div>
                   <div className="flex justify-between text-sm mb-1">
                     <div>Expire Date:</div>
-                    <div>{data.latestSurvey.expire_date}</div>
+                    <div>{data.latestSurveys.expire_date}</div>
                   </div>
                   <div className="flex justify-between text-sm mb-1">
                     <div>Status:</div>
-                    <div>{data.latestSurvey.status ? "Active" : "Draft"}</div>
+                    <div>{data.latestSurveys.status ? "Active" : "Draft"}</div>
                   </div>
                   <div className="flex justify-between text-sm mb-1">
                     <div>Questions:</div>
-                    <div>{data.latestSurvey.questions}</div>
+                    <div>{data.latestSurveys.questions}</div>
                   </div>
                   <div className="flex justify-between text-sm mb-1">
                     <div>Answers:</div>
-                    <div>{data.latestSurvey.answers}</div>
+                    <div>{data.latestSurveys.answers}</div>
                   </div>
                   <div className="flex justify-between">
-                    <TButton to={`/surveys/${data.latestSurvey.id}`} link>
-                      <PencilIcon className="w-5 h-5 mr-2">
-                        Edit Survey
+                    <TButton to={`/surveys/${data.latestSurveys.id}`} link>
+                      <PencilIcon className="w-5 h-5 mr-2 text-emerald-400 ">
+                        
                       </PencilIcon>
+                      <p className="text-emerald-400 ">Edit Survey</p>
                     </TButton>
 
                     <TButton link>
-                      <EyeIcon className="w-5 h-5 mr-2">
-                        View Answers
+                      <EyeIcon className="w-5 h-5 mr-2 text-emerald-400 ">
+                      
                       </EyeIcon>
+                      <p className="text-emerald-400 ">View Answers</p>
                     </TButton>
                   </div>
                 </div>
               )}
-              {!data.latestSurvey && (
+              {!data.latestSurveys && (
                 <div className="text-gray-100 text-center py-16">
                   You don't have any surveys yet
                 </div>

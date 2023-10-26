@@ -2,9 +2,9 @@ import { ArrowTopRightOnSquareIcon, PencilIcon, TrashIcon } from '@heroicons/rea
 import React from 'react'
 import TButton from './core/TButton'
 
-export default function SurveyListItem({survey, onDeleteClick}) {
+export default function SurveyListItem({survey, onDeleteClick, style = ''}) {
   return (
-    <div className='flex flex-col py-4 px-6 rounded-lg shadow-md bg-white hover:bg-gray-50 h-[470px]'>
+    <div className='flex flex-col py-4 px-6 rounded-lg shadow-md bg-white hover:bg-gray-50 h-[470px]' style={style}>
         <img src={survey.image_url} alt={survey.title} className='w-full h-48 object-cover' />
         <h4 className='mt-4 text-lg font-bold'>{survey.title}</h4>
         <div dangerouslySetInnerHTML={{__html: survey.description}} className='overflow-hidden flex-1'>
@@ -15,7 +15,7 @@ export default function SurveyListItem({survey, onDeleteClick}) {
                 Edit
             </TButton>
             <div className='flex items-center'>
-                <TButton href={`/view/survey/${survey.slug}`} circle link>
+                <TButton href={`/survey/public/${survey.slug}`} circle link>
                     <ArrowTopRightOnSquareIcon className='w-4 h-4' />
                 </TButton>
 

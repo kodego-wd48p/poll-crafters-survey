@@ -68,11 +68,11 @@ export default function Surveys() {
       }
       
       {!loading &&
-        <div>
+        <div >
           {surveys.length === 0 && <div className="py-8 text-center text-white">You don't have any surveys created!</div>}
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
               {surveys.map(survey => (
-                <SurveyListItem survey={survey} key={survey.id} onDeleteClick={onDeleteClick} />
+                <SurveyListItem survey={survey} key={survey.id} onDeleteClick={onDeleteClick} style={{animationDelay:'0.5s'}}/>
               ))}
           </div>
           {surveys.length > 0 &&

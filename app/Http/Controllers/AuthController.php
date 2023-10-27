@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
@@ -25,6 +26,11 @@ class AuthController extends Controller
         return response([
             'user' => $user,
             'token' => $token
+        ]);
+        //event(new Registered($user));
+
+        return response([
+            'message' => 'Registration successful. Please check your email for verification.',
         ]);
     }
 

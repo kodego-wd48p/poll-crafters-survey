@@ -66,10 +66,10 @@ export default function Dashboard() {
               style={{animationDelay: '0.3s'}}
             >
               {data.latestSurveys && (
-                <div>
+                <div className="mt-6">
                   <img 
                     src={data.latestSurveys.image_url} 
-                    className="w-[240px] mx-auto"
+                    className="w-[240px] mx-auto mb-3"
                   />
                   <h3 className="font-bold text-xl mb-3">
                     {data.latestSurveys.title}

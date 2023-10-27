@@ -77,7 +77,7 @@ export default function Login() {
                     Password
                   </label>
                   <div className="text-sm">
-                    <a href="#" className="font-semibold text-grbtnred hover:text-grbtnhover">
+                    <a href="#" className="font-semibold text-emerald-400 hover:text-emerald-500">
                       Forgot password?
                     </a>
                   </div>
@@ -99,7 +99,7 @@ export default function Login() {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-grbtnred px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-grbtnhover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-grbtnhover"
+                  className="flex w-full justify-center rounded-md bg-emerald-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-grbtnhover"
                 >
                   Sign in
                 </button>
@@ -108,7 +108,7 @@ export default function Login() {
   
             <p className="mt-10 text-center text-sm text-gray-500">
               Not a member?{' '}
-              <Link to="/signup" className="font-semibold leading-6 text-grbtnred hover:text-grtextlight">
+              <Link to="/signup" className="font-semibold leading-6 text-emerald-400 hover:text-emerald-500">
                 Register
               </Link>
             </p>

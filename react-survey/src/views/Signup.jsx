@@ -12,7 +12,7 @@ export default function Signup() {
     const [error, setError] = useState({__html: ''});
 
     const onSubmit = (ev) => {
-        ev.preventDefault();
+        ev.preventDefault(); //preventing to reload the page so that you can handle the form sunmission
         setError({__html: ''})
 
         axiosClient.post('/signup', {
@@ -24,6 +24,7 @@ export default function Signup() {
           .then(({data}) => {
             setCurrentUser(data.user)
             setUserToken(data.token)
+           
           })
         .catch((error) => {
           if(error.response) {
@@ -37,7 +38,7 @@ export default function Signup() {
 
     return (
       <>
-        
+      
         
   
           <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-grtextlight">
@@ -128,7 +129,7 @@ export default function Signup() {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-grbtnred px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-grbtnhover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-grnavgreen"
+                  className="flex w-full justify-center rounded-md bg-emerald-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-grnavgreen"
                 >
                   Sign up
                 </button>
@@ -137,7 +138,7 @@ export default function Signup() {
   
             <p className="mt-10 text-center text-sm text-gray-500">
               Already have an account?{' '}
-              <Link to="/login" className="font-semibold leading-6 text-grbtnred hover:text-grbtnhover">
+              <Link to="/login" className="font-semibold leading-6 text-emerald-400 hover:text-emerald-500">
                 Login
               </Link>
             </p>
